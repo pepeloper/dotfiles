@@ -1,19 +1,17 @@
 #!/bin/bash
 
-echo "Setting up test project..."
+echo "Setting up Laravel project..."
 
 REPOSITORY=$1
 DIRECTORY="./$2"
 
-if [[ $PWD != "$HOME/Herd" ]]; then
-    echo "You can only setup projects in the $HOME/Herd directory."
-
+if [[ $PWD != "$HOME/projects" ]]; then
+    echo "You can only setup projects in the $HOME/projects directory."
     exit 1
 fi
 
 if [ -z "$REPOSITORY" ] || [ -z "$DIRECTORY" ]; then
     echo "Please provide both a repository and target directory."
-
     exit 1
 fi
 
@@ -34,4 +32,4 @@ php artisan migrate:fresh --seed
 npm install
 npm run build
 
-open -a "/Applications/Visual Studio Code.app" "`pwd`"
+cursor .
